@@ -15,7 +15,3 @@
     }catch (mysqli_sql_exception) {
         echo "Unfortunate couldn't connect to database :(";
     };
-
-    if ($conn){
-        echo "Connection successful uff";
-    }

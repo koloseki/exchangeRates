@@ -1,10 +1,25 @@
     <?php
         include("database.php");
+        include ("currencyAPI.php");
+
+    $currencyAPI = new CurrencyAPI();
+    $exchangeRates = $currencyAPI->getExchangeRates();
+
+    // Iteruj przez kursy wymiany walut
+    foreach ($exchangeRates as $table) {
+        foreach ($table['rates'] as $rate) {
+            $currencyName = $rate['currency'];
+            $currencyPrice = $rate['mid'];
+
+            echo "Waluta: " . $currencyName . ", Cena: " . $currencyPrice . "<br>";
+        }
+    }
+
+
 
 
 
     ?>
-
 
     <!doctype html>
     <html lang="en">

@@ -1,17 +1,13 @@
 <?php
 
-    $db_server = "localhost";
-    $db_user = "root";
-    $db_pass = "";
-    $db_name = "exchangerates";
-    $conn = "";
+$host = 'localhost';
+$dbname = 'currency_exchange';
+$username = 'root';
+$password = '';
 
-
-    try {
-        $conn = mysqli_connect($db_server,
-            $db_user,
-            $db_pass,
-            $db_name);
-    }catch (mysqli_sql_exception) {
-        echo "Unfortunate couldn't connect to database :(";
-    };
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Błąd połączenia z bazą danych: ' . $e->getMessage());
+}

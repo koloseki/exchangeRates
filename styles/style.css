@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+body{
+    font-family: "Roboto", "Sans Serif Collection", serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    gap: 5vh;
+    margin: 0;
+}
+
+
+
+.exchangeForm{
+    display: flex;
+}
+
+.convert_button{
+    background-color: cadetblue;
+    color: snow;
+    border: none;
+    padding: .5rem 1rem;
+    transition: .3s;
+}
+
+.convert_button:hover{
+    background-color: #437172;
+    cursor: pointer;
+}
+
+
+
+
+#exchange_Form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.currencyValueLive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40dvh;
+    overflow: scroll;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50vw;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}

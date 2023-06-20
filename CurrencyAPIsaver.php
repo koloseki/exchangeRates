@@ -27,6 +27,5 @@ class CurrencyApiSaver {
             }
         }
 
-        echo "Dane zostały zapisane do bazy danych.";
     }
 }

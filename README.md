@@ -1,7 +1,7 @@
 # exchangeRates
 A very simple exchange calculator done in php 
 
-##How its working 
+## How its working 
    1. The application sends a request to the NBP (Narodowy Bank Polski) API to fetch the latest exchange rates for various currencies. The retrieved data is then saved to the database for future use.
    2.  On the main page, the current currency values are displayed in a table, based on the exchange rates obtained from the API and stored in the database. This provides users with the most up-to-date currency values.
    3.  When the user enters a value to be converted and selects the source and target currencies, the application retrieves the respective exchange rates from the database.

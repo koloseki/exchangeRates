@@ -2,7 +2,7 @@
 // Import necessary files
 include("database.php");
 include("CurrencyAPI.php");
-include("CurrencyApiSaver.php");
+include("CurrencyAPIsaver.php");
 
 // Create a CurrencyAPI object
 $currencyAPI = new CurrencyAPI();
@@ -35,34 +35,31 @@ $exchangeRatesFromDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Exchange calculator</h1>
 
-<div class="exchangeForm">
-    <form id="exchange_Form" action="convert.php" method="post">
-        <div>
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" min="1" step="0.01" required>
-        </div>
+<div class="exchangeForm" >
+    <form action="convert.php" method="post">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="1" step="0.01" required>
 
-        <div>
-            <label for="target_currency">From:</label>
-            <select id="target_currency" name="target_currency" required>
-                <?php foreach ($exchangeRatesFromDB as $rate): ?>
-                    <option value="<?php echo $rate['currency_code']; ?>">
-                        <?php echo $rate['currency_code']; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
 
-        <div>
-            <label for="source_currency">To:</label>
-            <select id="source_currency" name="source_currency" required>
-                <?php foreach ($exchangeRatesFromDB as $rate): ?>
-                    <option value="<?php echo $rate['currency_code']; ?>">
-                        <?php echo $rate['currency_code']; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+        <label for="source_currency">Source Currency:</label>
+        <select id="source_currency" name="source_currency" required>
+            <?php foreach ($exchangeRatesFromDB as $rate): ?>
+                <option value="<?php echo $rate['currency_code']; ?>">
+                    <?php echo $rate['currency_code']; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="target_currency">Target Currency:</label>
+        <select id="target_currency" name="target_currency" required>
+            <?php foreach ($exchangeRatesFromDB as $rate): ?>
+                <option value="<?php echo $rate['currency_code']; ?>">
+                    <?php echo $rate['currency_code']; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+
 
         <button class="convert_button" type="submit">Convert</button>
     </form>

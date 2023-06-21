@@ -1,6 +1,7 @@
 <?php
 require_once 'database.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['amount'], $_POST['source_currency'], $_POST['target_currency'])) {
     $amount = $_POST['amount'];
     $sourceCurrency = $_POST['source_currency'];
@@ -16,11 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['amount'], $_POST['sou
         $targetRate = $exchangeRates[1];
 
         // Perform currency conversion
-        $result = $amount * ($targetRate / $sourceRate);
+        $result = $amount * ($sourceRate / $targetRate);
+
+        $formattedResult = number_format($result, 2);
 
         // Save conversion data to the database
-        $stmt = $pdo->prepare("INSERT INTO exchange_history (amount, source_currency, target_currency, result) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$amount, $sourceCurrency, $targetCurrency, $result]);
+        $stmt = $pdo->prepare("INSERT INTO exchange_history (from_value,from_name,to_name,to_value) VALUES (?, ?, ?, ?)");
+        if (!$stmt->execute([$amount, $sourceCurrency, $targetCurrency, $formattedResult])) {
+            $errorInfo = $stmt->errorInfo();
+            echo "Błąd zapisu do bazy danych: " . $errorInfo[2];
+        }
+
     }
 }
 
@@ -44,7 +51,7 @@ $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="result">
     <?php if (isset($result)): ?>
-        <h3>Result: <?php echo $result; ?></h3>
+        <h3>Result: <?php echo $formattedResult; ?></h3>
     <?php endif; ?>
 </div>
 
@@ -59,10 +66,10 @@ $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <?php foreach ($history as $conversion): ?>
             <tr>
-                <td><?php echo $conversion['amount']; ?></td>
-                <td><?php echo $conversion['source_currency']; ?></td>
-                <td><?php echo $conversion['target_currency']; ?></td>
-                <td><?php echo $conversion['result']; ?></td>
+                <td><?php echo $conversion['from_value']; ?></td>
+                <td><?php echo $conversion['from_name']; ?></td>
+                <td><?php echo $conversion['to_name']; ?></td>
+                <td><?php echo $conversion['to_value']; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

@@ -19,11 +19,20 @@ class CurrencyApiSaver {
                 $stmt->execute([$currencyCode]);
                 $count = $stmt->fetchColumn();
 
-                if ($count == 0) {
+                if ($count > 0) {
+                    // Rekord istnieje, usuń go z bazy danych
+                    $deleteStmt = $this->pdo->prepare("DELETE FROM exchangerates WHERE currency_code = ?");
+                    $deleteStmt->execute([$currencyCode]);
+
+                    // Dodaje nowy rekord z API
+                    $stmt = $this->pdo->prepare("INSERT INTO exchangerates (currency_code, currency_name, price) VALUES (?, ?, ?)");
+                    $stmt->execute([$currencyCode, $currencyName, $currencyPrice]);
+                } else {
                     // Wstaw, tylko jeśli rekord nie istnieje
                     $stmt = $this->pdo->prepare("INSERT INTO exchangerates (currency_code, currency_name, price) VALUES (?, ?, ?)");
                     $stmt->execute([$currencyCode, $currencyName, $currencyPrice]);
                 }
+
             }
         }
 

@@ -3,6 +3,8 @@
 
 body{
     font-family: "Roboto", "Sans Serif Collection", serif;
+    background: #262a2b;
+    color: #c8c3bc;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,62 +14,24 @@ body{
     margin: 0;
 }
 
-
-
-.exchangeForm{
-    display: flex;
-}
-
-.convert_button{
-    background-color: cadetblue;
-    color: snow;
-    border: none;
-    padding: .5rem 1rem;
-    transition: .3s;
-}
-
-.convert_button:hover{
-    background-color: #437172;
+.pointer{
     cursor: pointer;
 }
 
 
 
 
-#exchange_Form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+
+/*Turn off arrows in in input */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-
-
-
-
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.currencyValueLive{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 40dvh;
-    overflow: scroll;
-}
-
-table {
-    border-collapse: collapse;
-    width: 50vw;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

@@ -29,7 +29,4 @@ th, td {
     padding: .5rem 1rem;
     transition: .3s;
 }
-.GoBackButton:hover{
-    background-color: #437172;
-    cursor: pointer;
-}
+

@@ -8,6 +8,7 @@ class CurrencyAPI{
         $responseA = file_get_contents($urlA);
         $dataA = json_decode($responseA, true);
 
+
         $urlB = $this->apiUrl . "/api/exchangerates/tables/B";
         $responseB = file_get_contents($urlB);
         $dataB = json_decode($responseB, true);

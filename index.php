@@ -1,7 +1,7 @@
 <?php
 // Import necessary files
 include("database.php");
-include("CurrencyAPI.php");
+include("currencyAPI.php");
 include("CurrencyAPIsaver.php");
 
 // Create a CurrencyAPI object

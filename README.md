@@ -1,7 +1,7 @@
 # exchangeRates
 A very simple exchange calculator done in php 
 
-LiveDemo [http://exchangerates.great-site.net]
+Deployed on Heroku [https://exchange-rate-7eabc75987d4.herokuapp.com/]
 
 
 ## How its working 

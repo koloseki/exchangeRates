@@ -1,8 +1,6 @@
 # exchangeRates
 A very simple exchange calculator done in php 
 
-Deployed on Heroku [https://exchange-rate-7eabc75987d4.herokuapp.com/]
-
 
 ## How its working 
    1. The application sends a request to the NBP (Narodowy Bank Polski) API to fetch the latest exchange rates for various currencies. The retrieved data is then saved to the database for future use.
